@@ -53,7 +53,10 @@ GET http://localhost:4000/api/v1/rooms-types
 Content-Type: application/json
 //this will show you all rooms in the database. you can copy out an id for testing out subsequent endpoints.
 
-//GET room type by page. I implemented pagination.
+// GET http://localhost:4000/api/v1/rooms-types
+The above link can be used to get all room types
+
+//GET room type by page. I implemented pagination as well
 
 GET http://localhost:4000/api/v1/rooms-types?page=1
 
@@ -71,16 +74,19 @@ GET http://localhost:4000/api/v1/rooms?search=Te&roomType=63e7eb04ef206a16258708
 
 ```
 ###
+```
+
 // create roomtype
 POST http://localhost:4000/api/v1/rooms-types
 Content-Type: application/json
 
 {
-    "title": "CRUD",
-    "description": "Performing a CRUD operation using Nodejs, ExressJs and MongoDb"
+"title": "CRUD",
+"description": "Performing a CRUD operation using Nodejs, ExressJs and MongoDb"
 }
 
 ###
+
 ```
 
 ### Updating API ENDPOINTS
@@ -108,4 +114,6 @@ Content-Type: application/json
 ```
 
 # HOTELROOM
+
 # HOTELROOM
+```
