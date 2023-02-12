@@ -7,44 +7,24 @@ import mongoose from 'mongoose';
  *  Get all rooms
  */
 export const getRoombySearchAndFilter = async (req, res) => {
-	const { search, roomType, minPrice, maxPrice } = req.query;
-
 	try {
-		const searchQuery = search || '';
-		const roomTypeQuery = roomType || '';
-		const minPriceQuery = minPrice || 0;
-		const maxPriceQuery = maxPrice || Number.MAX_SAFE_INTEGER;
+		const filteredData = await RoomModel.find({
+			$or: [
+				{ type: req.body.type },
 
-		// Define the filter to be used in the query
-		const filter = {
-			$and: [
-				{
-					$or: [{ name: { $regex: searchQuery, $options: 'i' } }],
-				},
-				{ roomType: roomTypeQuery },
-				{ price: { $gte: minPriceQuery, $lte: maxPriceQuery } },
+				{ name: req.body.name },
+
+				{ price: { $gt: req.body.minimum, $lt: req.body.maximum } },
 			],
-		};
+		});
 
-		const filteredRoomData = await RoomModel.find(filter);
-		return res.status(200).send({ status: true, data: filteredRoomData });
+		//console.log(filteredData);
+		return res.status(200).send({ status: true, data: filteredData });
 	} catch (error) {
 		return res.status(404).json(error.message);
 	}
 };
-/**
- *  Get singleroom by id
- */
-//NOT PART OF TASK
-// export const findRoomById = async (req, res) => {
-// 	const id = req.params.id;
-// 	await RoomModel.findById(id, (err, rooms) => {
-// 		if (err) return res.status(404).json({ message: err.message });
-// 		return res.status(200).json({ rooms: rooms });
-// 	});
-// };
-/**
- 
+
 /** */
 //GET ROOM TYPE
 export const getRoomType = async (req, res) => {
@@ -59,6 +39,7 @@ export const getRoomType = async (req, res) => {
 	}
 	const skipEqn = pageSize * (page - 1);
 
+	//all room types
 	try {
 		const allRoomTypes = await RoomModel.find().skip(skipEqn).limit(+pageSize);
 

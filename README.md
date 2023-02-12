@@ -64,9 +64,17 @@ GET http://localhost:4000/api/v1/rooms-types?page=1
 limited rooms(5) in the database, they fit into one page.
 Content-Type: application/json
 
-//GET ROOM BY SEARCHQUERY
+//GET ROOM BY SEARCH
+this is an example of the request body to find a roomtype and name
+//{
 
-GET http://localhost:4000/api/v1/rooms?search=Te&roomType=63e7eb04ef206a1625870807&minprice=4000&maxprice=8000000
+"name":"SouthAmerica",
+"type": "penthouse",
+"minimum": 3000,
+"maximum":150000
+}
+
+GET http://localhost:4000/api/v1/rooms
 
 \*the above link is an example. it can be tweaked and will still produce results...
 
@@ -119,4 +127,5 @@ Content-Type: application/json
 # HOTELROOM
 
 # HOTELROOM
+
 ```
