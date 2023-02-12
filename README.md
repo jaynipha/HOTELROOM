@@ -68,7 +68,7 @@ Content-Type: application/json
 
 GET http://localhost:4000/api/v1/rooms?search=Te&roomType=63e7eb04ef206a1625870807&minprice=4000&maxprice=8000000
 
-\*the above link is an example. it can be tweaked and will still produce results
+\*the above link is an example. it can be tweaked and will still produce results...
 
 ### Creating API ENDPOINTS
 
@@ -95,6 +95,7 @@ Content-Type: application/json
 //pick an id from the db to test
 
 ###
+```
 
 PATCH http://localhost:4000/api/v1/rooms/id
 Content-Type: application/json
@@ -105,6 +106,8 @@ Content-Type: application/json
 // delete room
 
 ###
+
+```
 
 DELETE http://localhost:4000/api/v1/rooms/id
 Content-Type: application/json
